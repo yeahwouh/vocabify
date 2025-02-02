@@ -64,13 +64,16 @@ function searchGroceries() {
     const groceryList = document.getElementById("groceryList");
     groceryList.innerHTML = "";
 
-    groceries.forEach(item => {
-        if (item.toLowerCase().includes(searchInput)) {
-            const li = document.createElement("li");
-            li.textContent = item;
-            groceryList.appendChild(li);
-        }
+    translateText(searchInput, "EN").then(result => {
+        
+        const li = document.createElement("li");
+        li.textContent = result;
+        groceryList.appendChild(li);
+        
+    }).catch(error => {
+        console.log('Error:', error);
     });
+
 }
 
 window.onload = function() {
