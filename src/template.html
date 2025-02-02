@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocery Search</title>
+    <title>Vocabify</title>
 </head>
 <body>
     <div id="sidebar" class="sidebar">
@@ -16,9 +16,10 @@
         <button class="openbtn" onclick="toggleSidebar()">☰</button>
         <div id="view1" class="view">
             <h2>View 1</h2>
-            <input type="text" id="searchBar" placeholder="Search groceries..." onkeyup="searchGroceries()">
-            <ul id="groceryList">
+            <input type="text" id="searchBar" placeholder="Search vocabs..." onkeyup="searchGroceries()">
+            <ul id="validTranslations">
                 <!-- Grocery items will be populated here -->
+                 <li id="translationResult"></li>
             </ul>
         </div>
         <div id="view2" class="view" style="display:none;">

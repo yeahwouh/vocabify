@@ -71,17 +71,17 @@ body {
     border-radius: 4px;
 }
 
-#groceryList {
+#validTranslations {
     list-style-type: none;
     padding: 0;
 }
 
-#groceryList li {
+#validTranslations li {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     cursor: pointer;
 }
 
-#groceryList li:hover {
+#validTranslations li:hover {
     background-color: #f5f5f5;
 }

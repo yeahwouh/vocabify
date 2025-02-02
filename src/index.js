@@ -1,8 +1,6 @@
 // index.js
 import "./styles.css";
 
-const groceries = ["Apples", "Bananass", "Bread", "Milk", "Eggs", "Cheese", "Chicken", "Rice", "Pasta", "Tomatoes", "Carrots", "Onions", "Potatoes", "Cereal", "Coffee"];
-
 async function translateText(text, targetLang = 'DE') {
     try {
         const API_KEY = "15360195-cc33-4e48-95f5-086840252bab:fx";
@@ -21,22 +19,6 @@ async function translateText(text, targetLang = 'DE') {
         return text;
     }
 }
-
-// Test it
-translateText("Hello, World!", "FR").then(result => {
-    console.log(result);
-}).catch(error => {
-    console.error('Error:', error);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const groceryList = document.getElementById("groceryList");
-    groceries.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        groceryList.appendChild(li);
-    });
-});
 
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
@@ -59,16 +41,25 @@ function showView(viewId) {
     document.getElementById(viewId).style.display = "block";
 }
 
-function searchGroceries() {
+function debounce(func, wait=250) {
+    let timeout;
+    return function(...args) {
+        // Clear the previous timeout to reset the wait time
+        clearTimeout(timeout);
+        // Set a new timeout to call the function after the specified wait time
+        timeout = setTimeout(() => func(...args), wait);
+    };
+}
+
+function searchTranslation() {
     const searchInput = document.getElementById("searchBar").value.toLowerCase();
-    const groceryList = document.getElementById("groceryList");
-    groceryList.innerHTML = "";
+
+    const translationResult = document.getElementById("translationResult");
+    
 
     translateText(searchInput, "EN").then(result => {
         
-        const li = document.createElement("li");
-        li.textContent = result;
-        groceryList.appendChild(li);
+        translationResult.textContent = result;
         
     }).catch(error => {
         console.log('Error:', error);
@@ -76,10 +67,12 @@ function searchGroceries() {
 
 }
 
+const debouncedSearch = debounce(searchTranslation, 300);
+
 window.onload = function() {
-    searchGroceries();
+    debouncedSearch();
 };
 
 window.toggleSidebar = toggleSidebar;
 window.showView = showView;
-window.searchGroceries = searchGroceries;
+window.searchGroceries = debouncedSearch;
