@@ -1,5 +1,6 @@
 // index.js
 import "./styles.css";
+import { Item } from "./flashcard.js";
 
 async function translateText(text, targetLang = 'DE') {
     try {
@@ -53,18 +54,25 @@ function debounce(func, wait=250) {
 
 function searchTranslation() {
     const searchInput = document.getElementById("searchBar").value.toLowerCase();
-
     const translationResult = document.getElementById("translationResult");
     
-
     translateText(searchInput, "EN").then(result => {
-        
         translationResult.textContent = result;
+
+        // Create a button to add the flashcard
+        const addButton = document.createElement("button");
+        addButton.textContent = "Add Flashcard";
+        addButton.onclick = () => {
+            new Item(searchInput, result); // Create a new flashcard Item
+            console.log(Item.items);
+        };
+
+        // Append the button to the translation result
+        translationResult.appendChild(addButton);
         
     }).catch(error => {
         console.log('Error:', error);
     });
-
 }
 
 const debouncedSearch = debounce(searchTranslation, 300);
