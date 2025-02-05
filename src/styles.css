@@ -2,6 +2,20 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    height: 100vh; /* Full viewport height */
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+    width: 100%; /* Allow full width */
+    max-width: 600px; /* Set a max width for the main content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: add some shadow for better visibility */
+    background-color: #fff; /* Optional: background color */
+    border-radius: 8px; /* Optional: rounded corners */
+    margin-top: 20px; /* Optional: add some margin from the top */
 }
 
 .sidebar {
@@ -84,4 +98,99 @@ body {
 
 #validTranslations li:hover {
     background-color: #f5f5f5;
+}
+
+.add-flashcard-button {
+    background-color: #111; /* Black background */
+    color: white;           /* White text */
+    border: none;           /* No border */
+    padding: 10px 15px;    /* Padding */
+    cursor: pointer;        /* Pointer cursor on hover */
+    margin-top: 10px;      /* Margin on top */
+    font-size: 16px;       /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.add-flashcard-button:hover {
+    background-color: #333; /* Darker background on hover */
+}
+
+.scheduled-btn {
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.scheduled-btn:hover {
+    background-color: #333;
+}
+
+.flashcards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.flashcard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 200px; /* Fixed height to maintain square shape */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.flashcard-question, .flashcard-answer {
+    padding: 15px;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center text */
+    flex: 1; /* Allow both to take equal space */
+}
+
+.flashcard-question {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.flashcard-answer {
+    background-color: white;
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex: 1; /* Allow it to take up remaining space */
+    font-size: 18px; /* Adjust font size for visibility */
+    padding: 10px; /* Add some padding */
+    text-align: center; /* Center text */
+}
+
+.flashcard-next-review {
+    padding: 10px;
+    background-color: #e0f7fa; /* Light blue background */
+    text-align: center; /* Center the text */
+    font-size: 14px; /* Slightly smaller font size */
+    color: #00796b; /* Darker teal color for the text */
+    border-top: 1px solid #ddd; /* Divider line above */
+    position: relative; /* Ensure it stays within the card */
+}
+
+.delete-button {
+    background-color: #d9534f; /* Bootstrap danger color */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px; /* Space above the button */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.delete-button:hover {
+    background-color: #c9302c; /* Darker red on hover */
 }

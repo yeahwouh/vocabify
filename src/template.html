@@ -8,23 +8,28 @@
 <body>
     <div id="sidebar" class="sidebar">
         <button class="closebtn" onclick="toggleSidebar()">×</button>
-        <a href="#" onclick="showView('view1')">View 1</a>
-        <a href="#" onclick="showView('view2')">View 2</a>
+        <a href="#" onclick="showView('view1')">Translator</a>
+        <a href="#" onclick="showView('view2')">Flashcards</a>
     </div>
 
     <div id="main">
         <button class="openbtn" onclick="toggleSidebar()">☰</button>
         <div id="view1" class="view">
-            <h2>View 1</h2>
+            <h2>Translator</h2>
             <input type="text" id="searchBar" placeholder="Vokabeln suchen..." onkeyup="searchGroceries()">
-            <ul id="validTranslations">
-                <!-- Grocery items will be populated here -->
-                 <li id="translationResult"></li>
-            </ul>
+            <div id="translationResult">
+                <!-- Text will be populated here -->
+            </div>
+            <button class="add-flashcard-button" id="addFlashcardButton" style="display:none;">
+                Add Flashcard
+            </button>
         </div>
         <div id="view2" class="view" style="display:none;">
-            <h2>View 2</h2>
-            <p>Content for view 2 goes here.</p>
+            <h2>Flashcards</h2>
+            <button id="showScheduledBtn" class="scheduled-btn">View Scheduled Cards</button>
+            <div id="flashcardsContainer" class="flashcards-container">
+                <!-- Flashcards will be populated here -->
+            </div>
         </div>
     </div>
 </body>
