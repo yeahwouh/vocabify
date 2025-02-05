@@ -6,7 +6,7 @@ class Item {
         this.answer = answer;
         this.eFactor = 2.5;  // Initial E-Factor
         this.interval = 1;    // Initial interval (in days)
-        this.nextReview = new Date(Date.now() + 24 * 60 * 60 * 1000); // Next review in 1 day
+        this.nextReview = new Date(Date.now()); // When initialized it is scheduled for today
         Item.items.push(this);
         Item.saveToLocalStorage(); // Save whenever a new item is created
     }
@@ -68,22 +68,5 @@ const exampleCards = [
     new Item("Who wrote 'Romeo and Juliet'?", "William Shakespeare")
 ];
 
-// // Example usage
-// function main() {
-//     const items = [
-//         new Item("What is the capital of France?", "Paris"),
-//         new Item("What is 2 + 2?", "4")
-//     ];
-
-//     items.forEach(item => {
-//         console.log(`Question: ${item.question}`);
-//         console.log(`Answer: ${item.answer}`);
-//         const quality = parseInt(prompt("Rate your recall (0-5): "), 10);
-//         item.update(quality);
-//         console.log(`Updated: ${item.toString()}\n`);
-//     });
-// }
-
-// main();
 
 export { Item };

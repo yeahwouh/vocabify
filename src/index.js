@@ -140,3 +140,56 @@ window.onload = function() {
 window.toggleSidebar = toggleSidebar;
 window.showView = showView;
 window.searchGroceries = debouncedSearch;
+window.startReviewQueue = startReviewQueue;
+
+let currentReviewQueue = [];
+let currentCard = null;
+
+function startReviewQueue() {
+    currentReviewQueue = Item.items
+        .filter(item => item.nextReview <= new Date())
+        .sort((a, b) => a.nextReview - b.nextReview);
+
+    if (currentReviewQueue.length === 0) {
+        document.getElementById('reviewCard').innerHTML = '<h3>No cards to review!</h3>';
+        return;
+    }
+
+    showNextCard();
+}
+
+function showNextCard() {
+    if (currentReviewQueue.length === 0) {
+        // If there are no cards left in the review queue, show a message and refresh the flashcards view
+        document.getElementById('reviewCard').innerHTML = '<h3>Review complete!</h3>';
+        
+        // Optionally, you can switch back to the flashcards view
+        showView('view2'); // Assuming 'view2' is the ID for the flashcards view
+        displayFlashcards(false); // Refresh the flashcards list
+        return;
+    }
+
+    currentCard = currentReviewQueue[0];
+    document.getElementById('reviewQuestion').textContent = currentCard.question;
+    document.getElementById('reviewAnswer').textContent = currentCard.answer;
+    document.getElementById('reviewAnswer').style.display = 'none'; // Hide answer initially
+    document.getElementById('showAnswerBtn').style.display = 'block'; // Show the button
+    document.getElementById('qualityButtons').style.display = 'none'; // Hide quality buttons
+}
+
+function showAnswer() {
+    document.getElementById('reviewAnswer').style.display = 'block';
+    document.getElementById('showAnswerBtn').style.display = 'none';
+    document.getElementById('qualityButtons').style.display = 'flex';
+}
+
+function rateCard(quality) {
+    currentCard.update(quality);
+    currentReviewQueue.shift();
+    showNextCard();
+}
+
+// Add to window object for HTML access
+window.rateCard = rateCard;
+window.showAnswer = showAnswer;
+window.Items = Item.items;

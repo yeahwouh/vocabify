@@ -10,6 +10,7 @@
         <button class="closebtn" onclick="toggleSidebar()">×</button>
         <a href="#" onclick="showView('view1')">Translator</a>
         <a href="#" onclick="showView('view2')">Flashcards</a>
+        <a href="#" onclick="showView('view3'); startReviewQueue();">Review Queue</a>
     </div>
 
     <div id="main">
@@ -29,6 +30,21 @@
             <button id="showScheduledBtn" class="scheduled-btn">View Scheduled Cards</button>
             <div id="flashcardsContainer" class="flashcards-container">
                 <!-- Flashcards will be populated here -->
+            </div>
+        </div>
+        <div id="view3" class="view" style="display:none;">
+            <h2>Review Queue</h2>
+            <div id="reviewCard" class="review-card">
+                <div id="reviewQuestion" class="review-question"></div>
+                <div id="reviewAnswer" class="review-answer" style="display:none;"></div>
+                <button id="showAnswerBtn" class="show-answer-btn" onclick="showAnswer()">Show Answer</button>
+                <div id="qualityButtons" class="quality-buttons" style="display:none;">
+                    <button onclick="rateCard(1)">1</button>
+                    <button onclick="rateCard(2)">2</button>
+                    <button onclick="rateCard(3)">3</button>
+                    <button onclick="rateCard(4)">4</button>
+                    <button onclick="rateCard(5)">5</button>
+                </div>
             </div>
         </div>
     </div>

@@ -194,3 +194,56 @@ body {
 .delete-button:hover {
     background-color: #c9302c; /* Darker red on hover */
 }
+
+.review-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+.review-question {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.review-answer {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #2196F3;
+}
+
+.show-answer-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.quality-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.quality-buttons button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #2196F3;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.quality-buttons button:hover {
+    background-color: #1976D2;
+}
