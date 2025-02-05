@@ -1,3 +1,3 @@
 # Vocabify
 
-Run "npx webpack serve" in the command line and that's it. The rest is pretty easy to understand.
+Watch it live [here](https://yeahwouh.github.io/vocabify/)
